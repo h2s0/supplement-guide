@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Skills / Design system (auto-generated)
+design-system/
+.agents/
+.claude/skills/**/scripts/__pycache__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
