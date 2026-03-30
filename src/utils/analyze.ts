@@ -1,5 +1,5 @@
 import { supplementRules, combinationRules } from '../data/supplements'
-import type { AnalysisResult, FoodTimingType, SupplementRule } from '../types'
+import type { AnalysisItem, AnalysisResult, FoodTimingType, SupplementRule } from '../types'
 
 const FOOD_TIMING_LABELS: Record<FoodTimingType, string> = {
   empty_stomach: '공복',
@@ -36,15 +36,13 @@ export function analyzeSupplements(inputs: string[]): AnalysisResult {
 
   const morning: AnalysisResult['morning'] = []
   const evening: AnalysisResult['evening'] = []
+  const bedtime: AnalysisResult['bedtime'] = []
 
   for (const rule of matched.values()) {
     const item = { supplement: rule, foodTimingLabel: FOOD_TIMING_LABELS[rule.withFood] }
-    if (rule.timing === 'morning') morning.push(item)
+    if (rule.timing === 'bedtime') bedtime.push(item)
     else if (rule.timing === 'evening') evening.push(item)
-    else {
-      morning.push(item)
-      evening.push(item)
-    }
+    else morning.push(item) // 'morning' 및 'both' 모두 아침에 배치
   }
 
   const matchedIds = [...matched.keys()]
@@ -63,5 +61,13 @@ export function analyzeSupplements(inputs: string[]): AnalysisResult {
     }
   }
 
-  return { morning, evening, unrecognized, synergies, conflicts }
+  const sortByEmptyStomach = (a: AnalysisItem, b: AnalysisItem) =>
+    (a.supplement.withFood === 'empty_stomach' ? 0 : 1) -
+    (b.supplement.withFood === 'empty_stomach' ? 0 : 1)
+
+  morning.sort(sortByEmptyStomach)
+  evening.sort(sortByEmptyStomach)
+  bedtime.sort(sortByEmptyStomach)
+
+  return { morning, evening, bedtime, unrecognized, synergies, conflicts }
 }

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ResultSection({ result }: Props) {
-  const { morning, evening, unrecognized, synergies, conflicts } = result
+  const { morning, evening, bedtime, unrecognized, synergies, conflicts } = result
 
   return (
     <section className="space-y-5">
@@ -17,9 +17,10 @@ export default function ResultSection({ result }: Props) {
         <h2 className="text-sm font-semibold text-on-surface-muted">복용 스케줄</h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <TimeSlotCard slot="morning" items={morning} />
         <TimeSlotCard slot="evening" items={evening} />
+        <TimeSlotCard slot="bedtime" items={bedtime} />
       </div>
 
       <CombinationSection synergies={synergies} conflicts={conflicts} />

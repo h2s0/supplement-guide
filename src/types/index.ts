@@ -1,4 +1,4 @@
-export type TimingType = 'morning' | 'evening' | 'both'
+export type TimingType = 'morning' | 'evening' | 'bedtime' | 'both'
 export type FoodTimingType = 'empty_stomach' | 'with_food' | 'after_meal' | 'either'
 export type CombinationType = 'synergy' | 'avoid'
 
@@ -32,6 +32,7 @@ export interface CombinationResult {
 export interface AnalysisResult {
   morning: AnalysisItem[]
   evening: AnalysisItem[]
+  bedtime: AnalysisItem[]
   unrecognized: string[]
   synergies: CombinationResult[]
   conflicts: CombinationResult[]
