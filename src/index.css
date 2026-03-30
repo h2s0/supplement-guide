@@ -2,69 +2,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 /* ============================================================
-   DESIGN SYSTEM — SupplementGuide (Stitch)
-   Primary: #005147 (deep teal) | Font: Manrope + Inter
+   DESIGN SYSTEM — SupplementGuide
+   Primary: #f97316 (bright orange) | Font: Manrope + Inter
    ============================================================ */
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Manrope', system-ui, sans-serif;
 
-  /* Primary — deep teal */
-  --color-primary: #005147;
-  --color-primary-dark: #003d36;
-  --color-primary-light: #9ff2e1;
-  --color-primary-muted: #83d5c5;
+  /* Primary — bright orange */
+  --color-primary: #f97316;
+  --color-primary-dark: #ea580c;
+  --color-primary-light: #ffedd5;
+  --color-primary-muted: #fdba74;
   --color-on-primary: #ffffff;
-  --color-primary-container: #006b5e;
+  --color-primary-container: #c2410c;
 
-  /* Surface */
-  --color-surface: #f7faf8;
-  --color-surface-low: #f1f4f2;
-  --color-surface-mid: #ebefec;
-  --color-surface-high: #e5e9e6;
+  /* Surface — warm stone */
+  --color-surface: #fffbf7;
+  --color-surface-low: #f6f4f1;
+  --color-surface-mid: #eceae6;
+  --color-surface-high: #e2e0db;
   --color-surface-white: #ffffff;
 
-  /* Secondary — muted teal */
-  --color-secondary: #4a6267;
-  --color-chip: #cde7ed;
-  --color-chip-dark: #b1cbd1;
-  --color-on-chip: #051f23;
-  --color-on-chip-muted: #334b4f;
+  /* Secondary / chip */
+  --color-secondary: #9a3412;
+  --color-chip: #fef3c7;
+  --color-chip-dark: #fde68a;
+  --color-on-chip: #78350f;
+  --color-on-chip-muted: #92400e;
 
-  /* Tertiary — deep blue */
-  --color-tertiary: #0e4b72;
-  --color-tertiary-light: #cde5ff;
-  --color-on-tertiary-light: #0d4a71;
+  /* Tertiary — sky blue (morning slot) */
+  --color-tertiary: #1d4ed8;
+  --color-tertiary-light: #dbeafe;
+  --color-on-tertiary-light: #1e40af;
 
-  /* Outline */
-  --color-outline: #6e7976;
-  --color-outline-soft: #bec9c5;
+  /* Outline — warm gray */
+  --color-outline: #78716c;
+  --color-outline-soft: #d6d3d1;
 
-  /* Text */
-  --color-on-surface: #181c1b;
-  --color-on-surface-muted: #3e4946;
+  /* Text — warm dark */
+  --color-on-surface: #1c1917;
+  --color-on-surface-muted: #44403c;
 
   /* Page */
-  --color-page: #f7faf8;
+  --color-page: #fffbf7;
 
-  /* Morning slot */
-  --color-morning-bg: #f1f4f2;
+  /* Morning slot — sky blue */
+  --color-morning-bg: #f6f4f1;
   --color-morning-border: transparent;
-  --color-morning-icon-bg: #cde5ff;
-  --color-morning-icon: #0d4a71;
-  --color-morning-text: #181c1b;
-  --color-morning-sub: #3e4946;
-  --color-morning-empty: #6e7976;
+  --color-morning-icon-bg: #dbeafe;
+  --color-morning-icon: #1e40af;
+  --color-morning-text: #1c1917;
+  --color-morning-sub: #44403c;
+  --color-morning-empty: #78716c;
 
-  /* Evening slot */
-  --color-evening-bg: #f1f4f2;
+  /* Evening slot — teal mint */
+  --color-evening-bg: #f6f4f1;
   --color-evening-border: transparent;
-  --color-evening-icon-bg: #9ff2e1;
-  --color-evening-icon: #005046;
-  --color-evening-text: #181c1b;
-  --color-evening-sub: #3e4946;
-  --color-evening-empty: #6e7976;
+  --color-evening-icon-bg: #ccfbf1;
+  --color-evening-icon: #0f766e;
+  --color-evening-text: #1c1917;
+  --color-evening-sub: #44403c;
+  --color-evening-empty: #78716c;
+
+  /* Bedtime slot — soft violet */
+  --color-bedtime-bg: #f6f4f1;
+  --color-bedtime-border: transparent;
+  --color-bedtime-icon-bg: #ede9fe;
+  --color-bedtime-icon: #6d28d9;
+  --color-bedtime-text: #1c1917;
+  --color-bedtime-sub: #44403c;
+  --color-bedtime-empty: #78716c;
 
   /* Synergy */
   --color-synergy-bg: #ecfdf5;
@@ -96,8 +105,8 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.65;
-  color: #181c1b;
-  background-color: #f7faf8;
+  color: #1c1917;
+  background-color: #fffbf7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
