@@ -1,7 +1,7 @@
-import { BookOpen, HelpCircle } from 'lucide-react'
+import { HelpCircle } from 'lucide-react'
 import type { AnalysisResult } from '../types'
 import CombinationSection from './CombinationSection'
-import TimeSlotCard from './TimeSlotCard'
+import ScheduleCard from './ScheduleCard'
 
 interface Props {
   result: AnalysisResult
@@ -12,16 +12,8 @@ export default function ResultSection({ result }: Props) {
 
   return (
     <section className="space-y-5">
-      <div className="flex items-center gap-2 px-1">
-        <BookOpen size={16} className="text-outline" />
-        <h2 className="text-sm font-semibold text-on-surface-muted">복용 스케줄</h2>
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <TimeSlotCard slot="morning" items={morning} />
-        <TimeSlotCard slot="evening" items={evening} />
-        <TimeSlotCard slot="bedtime" items={bedtime} />
-      </div>
+      <ScheduleCard morning={morning} evening={evening} bedtime={bedtime} />
 
       <CombinationSection synergies={synergies} conflicts={conflicts} />
 
