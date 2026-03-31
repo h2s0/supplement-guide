@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { Sun, Moon, BedDouble, Camera } from 'lucide-react'
-import type { AnalysisResult } from '../types'
+import type { AnalysisResult, SupplementRule } from '../types'
 import { capImg, drinkImg, gelImg } from '../assets'
+import SupplementSheet from './SupplementSheet'
 
 type Props = Pick<AnalysisResult, 'morning' | 'evening' | 'bedtime'>
 
@@ -33,8 +35,10 @@ const SLOTS = [
 
 export default function ScheduleCard({ morning, evening, bedtime }: Props) {
   const data = { morning, evening, bedtime }
+  const [selected, setSelected] = useState<{ supplement: SupplementRule; foodTimingLabel: string } | null>(null)
 
   return (
+    <>
     <div
       className="rounded-3xl overflow-hidden shadow-sm border border-orange-100"
       style={{ background: 'linear-gradient(150deg, #fff7ed 0%, #fefce8 45%, #fdf4ff 100%)' }}
@@ -45,10 +49,10 @@ export default function ScheduleCard({ morning, evening, bedtime }: Props) {
         <span className="text-[11px] text-outline font-medium">오늘의 영양제</span>
       </div>
 
-      {/* 슬롯 3개 */}
-      {SLOTS.map((slot, i) => {
+      {/* 슬롯 3개 — 영양제 없는 슬롯은 숨김 */}
+      {SLOTS.filter((slot) => data[slot.key].length > 0).map((slot, i, arr) => {
         const items = data[slot.key]
-        const isLast = i === SLOTS.length - 1
+        const isLast = i === arr.length - 1
 
         return (
           <div key={slot.key} className={!isLast ? 'border-b border-orange-100/60' : ''}>
@@ -71,21 +75,18 @@ export default function ScheduleCard({ morning, evening, bedtime }: Props) {
 
             {/* 영양제 칩 */}
             <div className="px-4 pb-4 flex flex-wrap gap-1.5 min-h-[48px] items-center">
-              {items.length === 0 ? (
-                <span className="text-xs text-outline/50 italic">없음</span>
-              ) : (
-                items.map(({ supplement, foodTimingLabel }) => (
-                  <div
+              {items.map(({ supplement, foodTimingLabel }) => (
+                  <button
                     key={supplement.id}
-                    className="flex items-center gap-1 pl-2.5 pr-1 py-1 rounded-full bg-white/70 border border-orange-100 text-stone-800"
+                    onClick={() => setSelected({ supplement, foodTimingLabel })}
+                    className="flex items-center gap-1 pl-2.5 pr-1 py-1 rounded-full bg-white/70 border border-orange-100 text-stone-800 cursor-pointer hover:bg-white transition-colors duration-150 active:scale-[0.97]"
                   >
                     <span className="text-xs font-semibold">{supplement.name}</span>
                     <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${TIMING_BADGE[foodTimingLabel] ?? 'bg-white/60 text-stone-400'}`}>
                       {foodTimingLabel}
                     </span>
-                  </div>
-                ))
-              )}
+                  </button>
+              ))}
             </div>
 
           </div>
@@ -99,5 +100,12 @@ export default function ScheduleCard({ morning, evening, bedtime }: Props) {
       </div>
 
     </div>
+
+    <SupplementSheet
+      supplement={selected?.supplement ?? null}
+      foodTimingLabel={selected?.foodTimingLabel ?? ''}
+      onClose={() => setSelected(null)}
+    />
+    </>
   )
 }
