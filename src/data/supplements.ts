@@ -259,7 +259,6 @@ export const QUICK_ADD_SUPPLEMENTS = [
   '철분',
   '밀크씨슬',
   '비타민 B군',
-  '마그네슘',
   '루테인',
   '콜라겐',
   '아연',
