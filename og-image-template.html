@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+    }
+
+    /* 배경 장식 원 */
+    .blob1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #86efac 0%, transparent 70%);
+      border-radius: 50%;
+      top: -100px;
+      right: -60px;
+      opacity: 0.5;
+    }
+    .blob2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #4ade80 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: -80px;
+      left: 300px;
+      opacity: 0.3;
+    }
+    .blob3 {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #fde68a 0%, transparent 70%);
+      border-radius: 50%;
+      top: 40px;
+      left: 380px;
+      opacity: 0.35;
+    }
+
+    /* 왼쪽 텍스트 영역 */
+    .text-area {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border-radius: 100px;
+      padding: 10px 22px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #16a34a;
+      box-shadow: 0 4px 20px rgba(22, 163, 74, 0.15);
+      margin-bottom: 28px;
+    }
+
+    .title {
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #14532d;
+      letter-spacing: -3px;
+    }
+
+    .title span {
+      color: #16a34a;
+    }
+
+    .subtitle {
+      margin-top: 24px;
+      font-size: 26px;
+      font-weight: 700;
+      color: #166534;
+      opacity: 0.7;
+      letter-spacing: -0.5px;
+    }
+
+    /* 오른쪽 캐릭터 영역 */
+    .characters {
+      position: relative;
+      z-index: 2;
+      width: 520px;
+      height: 500px;
+      flex-shrink: 0;
+    }
+
+    .char {
+      position: absolute;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
+    }
+
+    /* 캐릭터 배치 */
+    .char-cap {
+      width: 220px;
+      top: 20px;
+      left: 140px;
+      transform: rotate(5deg);
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.15));
+    }
+
+    .char-gummy {
+      width: 180px;
+      bottom: 60px;
+      left: 10px;
+      transform: rotate(-8deg);
+    }
+
+    .char-vitaminc {
+      width: 190px;
+      bottom: 50px;
+      right: 20px;
+      transform: rotate(6deg);
+    }
+
+    .char-drink {
+      width: 150px;
+      top: 80px;
+      right: 30px;
+      transform: rotate(-5deg);
+    }
+
+    .char-gel {
+      width: 150px;
+      bottom: 100px;
+      left: 180px;
+      transform: rotate(10deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <!-- 배경 장식 -->
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="blob3"></div>
+
+    <!-- 텍스트 -->
+    <div class="text-area">
+      <div class="badge">
+        💊 무료 · 간편
+      </div>
+      <div class="title">
+        영양제<br><span>복용 가이드</span>
+      </div>
+      <div class="subtitle">
+        내 영양제, 언제 먹어야 할까?
+      </div>
+    </div>
+
+    <!-- 캐릭터들 -->
+    <div class="characters">
+      <img class="char char-cap"      src="src/assets/cap.png"      alt="" />
+      <img class="char char-drink"    src="src/assets/drink.png"    alt="" />
+      <img class="char char-gel"      src="src/assets/gel.png"      alt="" />
+      <img class="char char-gummy"    src="src/assets/gummy.png"    alt="" />
+      <img class="char char-vitaminc" src="src/assets/vitaminc.png" alt="" />
+    </div>
+  </div>
+</body>
+</html>
